@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Merkato Message Bridge</title>
+</head>
+<body style="text-align:center; padding:20px; background:#f0f0f0;">
+
+    <h2>STEP 1: Type List</h2>
+    <textarea id="items" rows="5" style="width:80%;" placeholder="Teff, Oil, Coffee"></textarea>
+    
+    <br><br>
+
+    <button onclick="sendToWrist()" style="padding:20px; background:blue; color:white; border-radius:10px;">
+        SEND TO WATCH
+    </button>
+
+    <script>
+        // Request Permission
+        Notification.requestPermission();
+
+        function sendToWrist() {
+            let list = document.getElementById('items').value;
+            let eachItem = list.split(',');
+
+            eachItem.forEach((item, index) => {
+                setTimeout(() => {
+                    // This is the "Message" that hits the watch
+                    new Notification("SHOPPING", {
+                        body: "Buy: " + item.trim(),
+                        tag: "item-" + index, // Keeps them separate
+                        renotify: true,
+                        requireInteraction: true // This keeps it ON TOP of the screen
+                    });
+                }, index * 1000); // 1 second gap between messages
+            });
+            alert("Sent! Check her wrist.");
+        }
+    </script>
+</body>
+</html>
