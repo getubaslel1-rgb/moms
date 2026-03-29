@@ -1,40 +1,779 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Merkato Message Bridge</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Shopping Tracker</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f0f13;
+      --surface: #1a1a22;
+      --surface2: #22222e;
+      --border: #2e2e3e;
+      --accent: #6c63ff;
+      --accent2: #ff6584;
+      --green: #2ecc71;
+      --yellow: #f39c12;
+      --text: #e8e8f0;
+      --muted: #888899;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px 16px 40px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-top: 4px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .card h2 {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 14px;
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--accent);
+    }
+
+    input[type="text"]::placeholder {
+      color: var(--muted);
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 11px 18px;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+
+    button:active { transform: scale(0.97); }
+    button:disabled { opacity: 0.45; cursor: default; }
+
+    .btn-add {
+      background: var(--accent);
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .btn-send {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent), #8b5cf6);
+      color: #fff;
+      padding: 14px;
+      font-size: 1rem;
+      border-radius: var(--radius);
+      margin-top: 4px;
+    }
+
+    .btn-download {
+      width: 100%;
+      background: var(--green);
+      color: #fff;
+      padding: 13px;
+      font-size: 0.95rem;
+      border-radius: var(--radius);
+      margin-top: 4px;
+    }
+
+    .btn-clear {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.78rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    th {
+      text-align: left;
+      color: var(--muted);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 0 10px 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 10px 10px 10px 0;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .badge-pending {
+      background: rgba(243,156,18,0.15);
+      color: var(--yellow);
+      border: 1px solid rgba(243,156,18,0.3);
+    }
+
+    .badge-received {
+      background: rgba(46,204,113,0.12);
+      color: var(--green);
+      border: 1px solid rgba(46,204,113,0.25);
+    }
+
+    .price-val {
+      color: var(--green);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 30px 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .empty-state .icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .notif-log {
+      max-height: 180px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .log-entry {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+    }
+
+    .log-entry:last-child { border-bottom: none; }
+
+    .log-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .dot-sent { background: var(--accent); }
+    .dot-reply { background: var(--green); }
+    .dot-info { background: var(--muted); }
+    .dot-error { background: var(--accent2); }
+
+    .log-time { color: var(--muted); flex-shrink: 0; }
+    .log-text { color: var(--text); }
+
+    .permission-banner {
+      background: rgba(108,99,255,0.12);
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .permission-banner .icon { font-size: 1.4rem; flex-shrink: 0; }
+
+    .permission-banner p {
+      font-size: 0.83rem;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .btn-grant {
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 7px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .stat {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .stat .num {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat .label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 2px;
+    }
+
+    .actions-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .actions-row h2 { margin-bottom: 0; }
+
+    .item-num {
+      color: var(--muted);
+      font-size: 0.78rem;
+      min-width: 22px;
+    }
+
+    #notifStatus {
+      font-size: 0.78rem;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .status-granted { background: rgba(46,204,113,0.12); color: var(--green); border: 1px solid rgba(46,204,113,0.25); }
+    .status-denied { background: rgba(255,101,132,0.12); color: var(--accent2); border: 1px solid rgba(255,101,132,0.25); }
+    .status-default { background: rgba(243,156,18,0.12); color: var(--yellow); border: 1px solid rgba(243,156,18,0.3); }
+
+    @media (max-width: 420px) {
+      .stat .num { font-size: 1.25rem; }
+      .btn-send { font-size: 0.9rem; }
+    }
+  </style>
 </head>
-<body style="text-align:center; padding:20px; background:#f0f0f0;">
+<body>
 
-    <h2>STEP 1: Type List</h2>
-    <textarea id="items" rows="5" style="width:80%;" placeholder="Teff, Oil, Coffee"></textarea>
-    
-    <br><br>
+<header>
+  <h1>Live Shopping Tracker</h1>
+  <p>Samsung Galaxy Watch · Bluetooth · Offline</p>
+</header>
 
-    <button onclick="sendToWrist()" style="padding:20px; background:blue; color:white; border-radius:10px;">
-        SEND TO WATCH
-    </button>
+<div id="permissionBanner" class="permission-banner" style="display:none">
+  <span class="icon">🔔</span>
+  <p>Notifications must be enabled so your watch can receive each item.</p>
+  <button class="btn-grant" onclick="requestPermission()">Enable</button>
+</div>
 
-    <script>
-        // Request Permission
-        Notification.requestPermission();
+<div id="notifStatus" class="status-default">⏳ Checking notification permission…</div>
 
-        function sendToWrist() {
-            let list = document.getElementById('items').value;
-            let eachItem = list.split(',');
+<div class="stat-row">
+  <div class="stat">
+    <div class="num" id="statTotal">0</div>
+    <div class="label">Items</div>
+  </div>
+  <div class="stat">
+    <div class="num" id="statReplied">0</div>
+    <div class="label">Priced</div>
+  </div>
+  <div class="stat">
+    <div class="num" id="statSum">0</div>
+    <div class="label">Total (ETB)</div>
+  </div>
+</div>
 
-            eachItem.forEach((item, index) => {
-                setTimeout(() => {
-                    // This is the "Message" that hits the watch
-                    new Notification("SHOPPING", {
-                        body: "Buy: " + item.trim(),
-                        tag: "item-" + index, // Keeps them separate
-                        renotify: true,
-                        requireInteraction: true // This keeps it ON TOP of the screen
-                    });
-                }, index * 1000); // 1 second gap between messages
-            });
-            alert("Sent! Check her wrist.");
+<div class="card">
+  <h2>Add Items</h2>
+  <div class="input-row">
+    <input type="text" id="itemInput" placeholder="e.g. Teff, Injera, Onions…" />
+    <button class="btn-add" onclick="addItem()">+ Add</button>
+  </div>
+</div>
+
+<div class="card">
+  <div class="actions-row">
+    <h2 style="flex:1">Shopping List</h2>
+    <button class="btn-clear" onclick="clearList()">Clear All</button>
+  </div>
+  <div id="listContainer">
+    <div class="empty-state">
+      <div class="icon">🛒</div>
+      <div>Your list is empty. Add items above.</div>
+    </div>
+  </div>
+  <button class="btn-send" id="sendBtn" onclick="startShopping()" disabled>
+    📡 Start Shopping — Send to Watch
+  </button>
+</div>
+
+<div class="card">
+  <h2>Activity Log</h2>
+  <div class="notif-log" id="notifLog">
+    <div class="empty-state" style="padding:16px 0">
+      <div>No activity yet.</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Market Data — Collected Prices</h2>
+  <div id="resultsContainer">
+    <div class="empty-state">
+      <div class="icon">📊</div>
+      <div>Price replies from your watch will appear here.</div>
+    </div>
+  </div>
+  <button class="btn-download" id="downloadBtn" onclick="downloadJSON()" disabled>
+    ⬇ Download Market JSON
+  </button>
+</div>
+
+<script>
+  'use strict';
+
+  /* ── State ── */
+  let shoppingList = [];   // { id, item }
+  let shoppingData = [];   // { id, item, price, timestamp }
+  let idCounter = 100;
+  let swRegistration = null;
+  let logEmpty = true;
+  let sw = null;
+
+  /* ── Service Worker for Notification Actions ── */
+  const SW_CODE = `
+self.addEventListener('notificationclick', function(event) {
+  const action = event.action;
+  const tag = event.notification.tag;
+  const itemId = parseInt(tag.replace('item-', ''), 10);
+
+  event.notification.close();
+
+  if (action === 'reply') {
+    const price = event.reply || '';
+    event.waitUntil(
+      clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function(list) {
+        for (const client of list) {
+          client.postMessage({ type: 'PRICE_REPLY', itemId: itemId, price: price });
+          return;
         }
-    </script>
+      })
+    );
+  }
+});
+
+self.addEventListener('push', function() {});
+`;
+
+  /* ── Boot ── */
+  (async function boot() {
+    checkPermission();
+    await registerSW();
+  })();
+
+  async function registerSW() {
+    if (!('serviceWorker' in navigator)) {
+      log('Service Worker not supported in this browser.', 'error');
+      return;
+    }
+    try {
+      const blob = new Blob([SW_CODE], { type: 'application/javascript' });
+      const swUrl = URL.createObjectURL(blob);
+      swRegistration = await navigator.serviceWorker.register(swUrl, { scope: './' });
+      navigator.serviceWorker.addEventListener('message', onSWMessage);
+      log('Watch bridge ready.', 'info');
+    } catch (e) {
+      log('SW registration failed: ' + e.message, 'error');
+    }
+  }
+
+  function onSWMessage(event) {
+    const { type, itemId, price } = event.data || {};
+    if (type === 'PRICE_REPLY') {
+      recordPrice(itemId, price);
+    }
+  }
+
+  /* ── Notification Permission ── */
+  function checkPermission() {
+    if (!('Notification' in window)) {
+      setStatus('denied', '❌ Notifications not supported');
+      return;
+    }
+    const perm = Notification.permission;
+    if (perm === 'granted') {
+      setStatus('granted', '✅ Notifications enabled');
+      document.getElementById('permissionBanner').style.display = 'none';
+    } else if (perm === 'denied') {
+      setStatus('denied', '🚫 Notifications blocked — check browser settings');
+      document.getElementById('permissionBanner').style.display = 'flex';
+    } else {
+      setStatus('default', '⏳ Tap "Enable" to allow notifications');
+      document.getElementById('permissionBanner').style.display = 'flex';
+    }
+  }
+
+  async function requestPermission() {
+    const result = await Notification.requestPermission();
+    checkPermission();
+    if (result === 'granted') {
+      log('Notification permission granted.', 'info');
+    } else {
+      log('Notification permission denied.', 'error');
+    }
+  }
+
+  function setStatus(type, text) {
+    const el = document.getElementById('notifStatus');
+    el.textContent = text;
+    el.className = 'status-' + type;
+  }
+
+  /* ── List Management ── */
+  function addItem() {
+    const input = document.getElementById('itemInput');
+    const name = input.value.trim();
+    if (!name) return;
+
+    idCounter++;
+    shoppingList.push({ id: idCounter, item: name });
+    input.value = '';
+    input.focus();
+    renderList();
+    updateStats();
+  }
+
+  document.getElementById('itemInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') addItem();
+  });
+
+  function removeItem(id) {
+    shoppingList = shoppingList.filter(i => i.id !== id);
+    renderList();
+    updateStats();
+  }
+
+  function clearList() {
+    if (shoppingList.length === 0) return;
+    if (!confirm('Clear all items from the list?')) return;
+    shoppingList = [];
+    renderList();
+    updateStats();
+  }
+
+  function renderList() {
+    const container = document.getElementById('listContainer');
+    const sendBtn = document.getElementById('sendBtn');
+
+    if (shoppingList.length === 0) {
+      container.innerHTML = `<div class="empty-state"><div class="icon">🛒</div><div>Your list is empty. Add items above.</div></div>`;
+      sendBtn.disabled = true;
+      return;
+    }
+
+    sendBtn.disabled = false;
+
+    let html = `<table><thead><tr><th>#</th><th>Item</th><th></th></tr></thead><tbody>`;
+    shoppingList.forEach((entry, idx) => {
+      html += `<tr>
+        <td class="item-num">${idx + 1}</td>
+        <td>${escHtml(entry.item)}</td>
+        <td><button class="btn-clear" onclick="removeItem(${entry.id})">✕</button></td>
+      </tr>`;
+    });
+    html += `</tbody></table>`;
+    container.innerHTML = html;
+  }
+
+  /* ── Send Notifications to Watch ── */
+  async function startShopping() {
+    if (Notification.permission !== 'granted') {
+      await requestPermission();
+      if (Notification.permission !== 'granted') return;
+    }
+
+    if (shoppingList.length === 0) return;
+
+    const btn = document.getElementById('sendBtn');
+    btn.disabled = true;
+    btn.textContent = '📡 Sending…';
+
+    let delay = 0;
+    for (const entry of shoppingList) {
+      setTimeout(() => sendItemNotification(entry), delay);
+      delay += 800; // stagger so watch handles each individually
+    }
+
+    setTimeout(() => {
+      btn.textContent = `✅ Sent ${shoppingList.length} item(s) to Watch`;
+    }, delay + 200);
+  }
+
+  async function sendItemNotification(entry) {
+    const tag = `item-${entry.id}`;
+    const options = {
+      body: `Reply with the price in ETB`,
+      tag: tag,
+      requireInteraction: true,
+      renotify: true,
+      vibrate: [500, 100, 500],
+      actions: [
+        { action: 'reply', title: '💬 Reply with Price', type: 'text', placeholder: 'e.g. 3500' }
+      ],
+      data: { itemId: entry.id, item: entry.item }
+    };
+
+    try {
+      if (swRegistration && swRegistration.showNotification) {
+        await swRegistration.showNotification(`🛒 ${entry.item}`, options);
+      } else {
+        new Notification(`🛒 ${entry.item}`, options);
+      }
+      log(`Sent: ${entry.item}`, 'sent');
+    } catch (e) {
+      log(`Failed to send "${entry.item}": ${e.message}`, 'error');
+    }
+  }
+
+  /* ── Price Reply Handler ── */
+  function recordPrice(itemId, price) {
+    const listItem = shoppingList.find(i => i.id === itemId);
+    const itemName = listItem ? listItem.item : `Item #${itemId}`;
+
+    const cleanPrice = (price || '').toString().trim();
+    const now = new Date();
+    const timestamp = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+
+    const existing = shoppingData.findIndex(d => d.id === itemId);
+    const record = { id: itemId, item: itemName, price: cleanPrice, timestamp };
+
+    if (existing >= 0) {
+      shoppingData[existing] = record;
+    } else {
+      shoppingData.push(record);
+    }
+
+    log(`Reply from watch → ${itemName}: ${cleanPrice} ETB`, 'reply');
+    renderResults();
+    updateStats();
+  }
+
+  /* ── Results Table ── */
+  function renderResults() {
+    const container = document.getElementById('resultsContainer');
+    const dlBtn = document.getElementById('downloadBtn');
+
+    if (shoppingData.length === 0) {
+      container.innerHTML = `<div class="empty-state"><div class="icon">📊</div><div>Price replies from your watch will appear here.</div></div>`;
+      dlBtn.disabled = true;
+      return;
+    }
+
+    dlBtn.disabled = false;
+
+    let html = `<table>
+      <thead><tr>
+        <th>#</th><th>Item</th><th>Price (ETB)</th><th>Time</th><th>Status</th>
+      </tr></thead><tbody>`;
+
+    const allIds = new Set([...shoppingList.map(i => i.id), ...shoppingData.map(d => d.id)]);
+
+    allIds.forEach(id => {
+      const listItem = shoppingList.find(i => i.id === id);
+      const dataItem = shoppingData.find(d => d.id === id);
+      const name = listItem ? listItem.item : (dataItem ? dataItem.item : `Item #${id}`);
+
+      if (dataItem) {
+        html += `<tr>
+          <td class="item-num">${id - 100}</td>
+          <td>${escHtml(name)}</td>
+          <td class="price-val">${escHtml(dataItem.price)}</td>
+          <td style="color:var(--muted)">${dataItem.timestamp}</td>
+          <td><span class="badge badge-received">✓ Received</span></td>
+        </tr>`;
+      } else if (listItem) {
+        html += `<tr>
+          <td class="item-num">${id - 100}</td>
+          <td>${escHtml(name)}</td>
+          <td style="color:var(--muted)">—</td>
+          <td style="color:var(--muted)">—</td>
+          <td><span class="badge badge-pending">⏳ Waiting</span></td>
+        </tr>`;
+      }
+    });
+
+    html += `</tbody></table>`;
+    container.innerHTML = html;
+  }
+
+  /* ── Stats ── */
+  function updateStats() {
+    document.getElementById('statTotal').textContent = shoppingList.length;
+    document.getElementById('statReplied').textContent = shoppingData.length;
+
+    const sum = shoppingData.reduce((acc, d) => {
+      const n = parseFloat(d.price.replace(/[^\d.]/g, ''));
+      return acc + (isNaN(n) ? 0 : n);
+    }, 0);
+
+    document.getElementById('statSum').textContent = sum > 0 ? sum.toLocaleString() : '0';
+  }
+
+  /* ── Download JSON ── */
+  function downloadJSON() {
+    if (shoppingData.length === 0) return;
+
+    const now = new Date();
+    const dateStr = now.toISOString().slice(0, 10);
+    const output = {
+      exportedAt: now.toISOString(),
+      date: dateStr,
+      totalItems: shoppingData.length,
+      totalCost: shoppingData.reduce((a, d) => a + (parseFloat(d.price.replace(/[^\d.]/g, '')) || 0), 0),
+      currency: 'ETB',
+      items: shoppingData
+    };
+
+    const blob = new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `market-data-${dateStr}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+
+    log(`Market JSON downloaded (${shoppingData.length} items).`, 'info');
+  }
+
+  /* ── Activity Log ── */
+  function log(text, type) {
+    const logEl = document.getElementById('notifLog');
+
+    if (logEmpty) {
+      logEl.innerHTML = '';
+      logEmpty = false;
+    }
+
+    const now = new Date();
+    const time = now.getHours().toString().padStart(2, '0') + ':' +
+                 now.getMinutes().toString().padStart(2, '0') + ':' +
+                 now.getSeconds().toString().padStart(2, '0');
+
+    const dotClass = type === 'sent' ? 'dot-sent'
+                   : type === 'reply' ? 'dot-reply'
+                   : type === 'error' ? 'dot-error'
+                   : 'dot-info';
+
+    const entry = document.createElement('div');
+    entry.className = 'log-entry';
+    entry.innerHTML = `<div class="log-dot ${dotClass}"></div>
+      <span class="log-time">${time}</span>
+      <span class="log-text">${escHtml(text)}</span>`;
+
+    logEl.insertBefore(entry, logEl.firstChild);
+  }
+
+  /* ── Util ── */
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  /* ── Fallback: listen for notification close + reply via BroadcastChannel ── */
+  if ('BroadcastChannel' in window) {
+    const bc = new BroadcastChannel('shopping-tracker');
+    bc.onmessage = function(e) {
+      if (e.data && e.data.type === 'PRICE_REPLY') {
+        recordPrice(e.data.itemId, e.data.price);
+      }
+    };
+  }
+
+  /* ── Demo: simulate a watch reply (for testing in browser) ── */
+  window._simulateReply = function(itemId, price) {
+    recordPrice(itemId, price);
+  };
+</script>
 </body>
 </html>
