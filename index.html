@@ -29,10 +29,7 @@
       padding: 20px 16px 40px;
     }
 
-    header {
-      text-align: center;
-      margin-bottom: 28px;
-    }
+    header { text-align: center; margin-bottom: 24px; }
 
     header h1 {
       font-size: 1.6rem;
@@ -44,22 +41,18 @@
       background-clip: text;
     }
 
-    header p {
-      color: var(--muted);
-      font-size: 0.82rem;
-      margin-top: 4px;
-    }
+    header p { color: var(--muted); font-size: 0.82rem; margin-top: 4px; }
 
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 20px;
-      margin-bottom: 16px;
+      padding: 18px;
+      margin-bottom: 14px;
     }
 
     .card h2 {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1.2px;
@@ -67,10 +60,7 @@
       margin-bottom: 14px;
     }
 
-    .input-row {
-      display: flex;
-      gap: 10px;
-    }
+    .input-row { display: flex; gap: 10px; }
 
     input[type="text"] {
       flex: 1;
@@ -84,13 +74,8 @@
       transition: border-color 0.2s;
     }
 
-    input[type="text"]:focus {
-      border-color: var(--accent);
-    }
-
-    input[type="text"]::placeholder {
-      color: var(--muted);
-    }
+    input[type="text"]:focus { border-color: var(--accent); }
+    input[type="text"]::placeholder { color: var(--muted); }
 
     button {
       cursor: pointer;
@@ -103,13 +88,9 @@
     }
 
     button:active { transform: scale(0.97); }
-    button:disabled { opacity: 0.45; cursor: default; }
+    button:disabled { opacity: 0.4; cursor: default; transform: none; }
 
-    .btn-add {
-      background: var(--accent);
-      color: #fff;
-      white-space: nowrap;
-    }
+    .btn-add { background: var(--accent); color: #fff; white-space: nowrap; }
 
     .btn-send {
       width: 100%;
@@ -118,7 +99,7 @@
       padding: 14px;
       font-size: 1rem;
       border-radius: var(--radius);
-      margin-top: 4px;
+      margin-top: 10px;
     }
 
     .btn-download {
@@ -128,36 +109,42 @@
       padding: 13px;
       font-size: 0.95rem;
       border-radius: var(--radius);
-      margin-top: 4px;
+      margin-top: 10px;
     }
 
     .btn-clear {
       background: transparent;
       border: 1px solid var(--border);
       color: var(--muted);
-      font-size: 0.78rem;
-      padding: 6px 12px;
+      font-size: 0.75rem;
+      padding: 5px 10px;
       border-radius: 6px;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
+    .btn-grant {
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 7px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      flex-shrink: 0;
     }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
 
     th {
       text-align: left;
       color: var(--muted);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      padding: 0 10px 10px 0;
+      padding: 0 8px 10px 0;
       border-bottom: 1px solid var(--border);
     }
 
     td {
-      padding: 10px 10px 10px 0;
+      padding: 9px 8px 9px 0;
       border-bottom: 1px solid var(--border);
       vertical-align: middle;
     }
@@ -166,9 +153,9 @@
 
     .badge {
       display: inline-block;
-      padding: 3px 9px;
+      padding: 3px 8px;
       border-radius: 20px;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
     }
 
@@ -184,26 +171,19 @@
       border: 1px solid rgba(46,204,113,0.25);
     }
 
-    .price-val {
-      color: var(--green);
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
+    .price-val { color: var(--green); font-weight: 700; }
 
     .empty-state {
       text-align: center;
-      padding: 30px 0;
+      padding: 28px 0;
       color: var(--muted);
-      font-size: 0.88rem;
+      font-size: 0.85rem;
     }
 
-    .empty-state .icon {
-      font-size: 2rem;
-      margin-bottom: 8px;
-    }
+    .empty-state .icon { font-size: 1.8rem; margin-bottom: 8px; }
 
     .notif-log {
-      max-height: 180px;
+      max-height: 170px;
       overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: var(--border) transparent;
@@ -213,16 +193,15 @@
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      padding: 8px 0;
+      padding: 7px 0;
       border-bottom: 1px solid var(--border);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
     }
 
     .log-entry:last-child { border-bottom: none; }
 
     .log-dot {
-      width: 8px;
-      height: 8px;
+      width: 8px; height: 8px;
       border-radius: 50%;
       margin-top: 4px;
       flex-shrink: 0;
@@ -233,7 +212,7 @@
     .dot-info { background: var(--muted); }
     .dot-error { background: var(--accent2); }
 
-    .log-time { color: var(--muted); flex-shrink: 0; }
+    .log-time { color: var(--muted); flex-shrink: 0; min-width: 64px; }
     .log-text { color: var(--text); }
 
     .permission-banner {
@@ -241,35 +220,16 @@
       border: 1px solid rgba(108,99,255,0.3);
       border-radius: var(--radius);
       padding: 14px 16px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
     .permission-banner .icon { font-size: 1.4rem; flex-shrink: 0; }
+    .permission-banner p { font-size: 0.82rem; color: var(--text); line-height: 1.4; flex: 1; }
 
-    .permission-banner p {
-      font-size: 0.83rem;
-      color: var(--text);
-      line-height: 1.4;
-    }
-
-    .btn-grant {
-      background: var(--accent);
-      color: #fff;
-      padding: 8px 14px;
-      border-radius: 7px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      flex-shrink: 0;
-    }
-
-    .stat-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
+    .stat-row { display: flex; gap: 10px; margin-bottom: 14px; }
 
     .stat {
       flex: 1;
@@ -290,31 +250,21 @@
     }
 
     .stat .label {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 0.8px;
       margin-top: 2px;
     }
 
-    .actions-row {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 12px;
-    }
+    .actions-row { display: flex; align-items: center; margin-bottom: 12px; }
+    .actions-row h2 { flex: 1; margin-bottom: 0; }
 
-    .actions-row h2 { margin-bottom: 0; }
-
-    .item-num {
-      color: var(--muted);
-      font-size: 0.78rem;
-      min-width: 22px;
-    }
+    .item-num { color: var(--muted); font-size: 0.75rem; min-width: 20px; }
 
     #notifStatus {
-      font-size: 0.78rem;
-      padding: 6px 12px;
+      font-size: 0.75rem;
+      padding: 5px 11px;
       border-radius: 20px;
       font-weight: 600;
       display: inline-block;
@@ -325,10 +275,47 @@
     .status-denied { background: rgba(255,101,132,0.12); color: var(--accent2); border: 1px solid rgba(255,101,132,0.25); }
     .status-default { background: rgba(243,156,18,0.12); color: var(--yellow); border: 1px solid rgba(243,156,18,0.3); }
 
-    @media (max-width: 420px) {
-      .stat .num { font-size: 1.25rem; }
-      .btn-send { font-size: 0.9rem; }
+    /* Manual price entry */
+    .price-input-row {
+      display: flex;
+      gap: 6px;
+      margin-top: 4px;
     }
+
+    .price-input-row input {
+      width: 90px;
+      padding: 5px 8px;
+      font-size: 0.82rem;
+      border-radius: 6px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      outline: none;
+    }
+
+    .price-input-row input:focus { border-color: var(--green); }
+
+    .btn-save-price {
+      background: var(--green);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .tip-box {
+      background: rgba(46,204,113,0.06);
+      border: 1px solid rgba(46,204,113,0.2);
+      border-radius: 9px;
+      padding: 12px 14px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .tip-box strong { color: var(--green); }
   </style>
 </head>
 <body>
@@ -340,11 +327,11 @@
 
 <div id="permissionBanner" class="permission-banner" style="display:none">
   <span class="icon">🔔</span>
-  <p>Notifications must be enabled so your watch can receive each item.</p>
+  <p>Enable notifications so each item is sent to your watch.</p>
   <button class="btn-grant" onclick="requestPermission()">Enable</button>
 </div>
 
-<div id="notifStatus" class="status-default">⏳ Checking notification permission…</div>
+<div id="notifStatus" class="status-default">⏳ Checking notifications…</div>
 
 <div class="stat-row">
   <div class="stat">
@@ -364,14 +351,14 @@
 <div class="card">
   <h2>Add Items</h2>
   <div class="input-row">
-    <input type="text" id="itemInput" placeholder="e.g. Teff, Injera, Onions…" />
+    <input type="text" id="itemInput" placeholder="e.g. Teff, Ayib, Kibe…" />
     <button class="btn-add" onclick="addItem()">+ Add</button>
   </div>
 </div>
 
 <div class="card">
   <div class="actions-row">
-    <h2 style="flex:1">Shopping List</h2>
+    <h2>Shopping List</h2>
     <button class="btn-clear" onclick="clearList()">Clear All</button>
   </div>
   <div id="listContainer">
@@ -388,20 +375,27 @@
 <div class="card">
   <h2>Activity Log</h2>
   <div class="notif-log" id="notifLog">
-    <div class="empty-state" style="padding:16px 0">
-      <div>No activity yet.</div>
-    </div>
+    <div class="empty-state" style="padding:14px 0"><div>No activity yet.</div></div>
   </div>
 </div>
 
 <div class="card">
-  <h2>Market Data — Collected Prices</h2>
+  <div class="actions-row">
+    <h2>Market Data — Prices</h2>
+  </div>
+
+  <div class="tip-box">
+    <strong>Watch reply:</strong> Tap the notification on your watch → Reply → type the price.<br>
+    <strong>Backup:</strong> If the reply doesn't auto-capture, enter prices manually in the table below.
+  </div>
+
   <div id="resultsContainer">
     <div class="empty-state">
       <div class="icon">📊</div>
-      <div>Price replies from your watch will appear here.</div>
+      <div>Prices will appear here after replies or manual entry.</div>
     </div>
   </div>
+
   <button class="btn-download" id="downloadBtn" onclick="downloadJSON()" disabled>
     ⬇ Download Market JSON
   </button>
@@ -410,66 +404,31 @@
 <script>
   'use strict';
 
-  /* ── State ── */
-  let shoppingList = [];   // { id, item }
-  let shoppingData = [];   // { id, item, price, timestamp }
+  let shoppingList = [];
+  let shoppingData = [];
   let idCounter = 100;
-  let swRegistration = null;
+  let swReg = null;
   let logEmpty = true;
-  let sw = null;
 
-  /* ── Service Worker for Notification Actions ── */
-  const SW_CODE = `
-self.addEventListener('notificationclick', function(event) {
-  const action = event.action;
-  const tag = event.notification.tag;
-  const itemId = parseInt(tag.replace('item-', ''), 10);
-
-  event.notification.close();
-
-  if (action === 'reply') {
-    const price = event.reply || '';
-    event.waitUntil(
-      clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function(list) {
-        for (const client of list) {
-          client.postMessage({ type: 'PRICE_REPLY', itemId: itemId, price: price });
-          return;
-        }
-      })
-    );
-  }
-});
-
-self.addEventListener('push', function() {});
-`;
-
-  /* ── Boot ── */
+  /* ── Service Worker Registration ── */
   (async function boot() {
     checkPermission();
-    await registerSW();
-  })();
-
-  async function registerSW() {
     if (!('serviceWorker' in navigator)) {
-      log('Service Worker not supported in this browser.', 'error');
+      log('Service Worker not supported — manual price entry only.', 'info');
       return;
     }
     try {
-      const blob = new Blob([SW_CODE], { type: 'application/javascript' });
-      const swUrl = URL.createObjectURL(blob);
-      swRegistration = await navigator.serviceWorker.register(swUrl, { scope: './' });
+      swReg = await navigator.serviceWorker.register('./sw.js', { scope: './' });
       navigator.serviceWorker.addEventListener('message', onSWMessage);
-      log('Watch bridge ready.', 'info');
+      log('Watch bridge ready (sw.js loaded).', 'info');
     } catch (e) {
-      log('SW registration failed: ' + e.message, 'error');
+      log('SW load failed — manual price entry available as backup.', 'info');
     }
-  }
+  })();
 
-  function onSWMessage(event) {
-    const { type, itemId, price } = event.data || {};
-    if (type === 'PRICE_REPLY') {
-      recordPrice(itemId, price);
-    }
+  function onSWMessage(e) {
+    const { type, itemId, price } = e.data || {};
+    if (type === 'PRICE_REPLY') recordPrice(itemId, price);
   }
 
   /* ── Notification Permission ── */
@@ -478,11 +437,11 @@ self.addEventListener('push', function() {});
       setStatus('denied', '❌ Notifications not supported');
       return;
     }
-    const perm = Notification.permission;
-    if (perm === 'granted') {
+    const p = Notification.permission;
+    if (p === 'granted') {
       setStatus('granted', '✅ Notifications enabled');
       document.getElementById('permissionBanner').style.display = 'none';
-    } else if (perm === 'denied') {
+    } else if (p === 'denied') {
       setStatus('denied', '🚫 Notifications blocked — check browser settings');
       document.getElementById('permissionBanner').style.display = 'flex';
     } else {
@@ -492,13 +451,9 @@ self.addEventListener('push', function() {});
   }
 
   async function requestPermission() {
-    const result = await Notification.requestPermission();
+    const r = await Notification.requestPermission();
     checkPermission();
-    if (result === 'granted') {
-      log('Notification permission granted.', 'info');
-    } else {
-      log('Notification permission denied.', 'error');
-    }
+    log(r === 'granted' ? 'Notifications granted.' : 'Notifications denied.', r === 'granted' ? 'info' : 'error');
   }
 
   function setStatus(type, text) {
@@ -512,50 +467,49 @@ self.addEventListener('push', function() {});
     const input = document.getElementById('itemInput');
     const name = input.value.trim();
     if (!name) return;
-
     idCounter++;
     shoppingList.push({ id: idCounter, item: name });
     input.value = '';
     input.focus();
     renderList();
+    renderResults();
     updateStats();
   }
 
-  document.getElementById('itemInput').addEventListener('keydown', function(e) {
+  document.getElementById('itemInput').addEventListener('keydown', e => {
     if (e.key === 'Enter') addItem();
   });
 
   function removeItem(id) {
     shoppingList = shoppingList.filter(i => i.id !== id);
     renderList();
+    renderResults();
     updateStats();
   }
 
   function clearList() {
-    if (shoppingList.length === 0) return;
+    if (!shoppingList.length) return;
     if (!confirm('Clear all items from the list?')) return;
     shoppingList = [];
     renderList();
+    renderResults();
     updateStats();
   }
 
   function renderList() {
     const container = document.getElementById('listContainer');
     const sendBtn = document.getElementById('sendBtn');
-
-    if (shoppingList.length === 0) {
+    if (!shoppingList.length) {
       container.innerHTML = `<div class="empty-state"><div class="icon">🛒</div><div>Your list is empty. Add items above.</div></div>`;
       sendBtn.disabled = true;
       return;
     }
-
     sendBtn.disabled = false;
-
     let html = `<table><thead><tr><th>#</th><th>Item</th><th></th></tr></thead><tbody>`;
     shoppingList.forEach((entry, idx) => {
       html += `<tr>
         <td class="item-num">${idx + 1}</td>
-        <td>${escHtml(entry.item)}</td>
+        <td>${esc(entry.item)}</td>
         <td><button class="btn-clear" onclick="removeItem(${entry.id})">✕</button></td>
       </tr>`;
     });
@@ -563,14 +517,13 @@ self.addEventListener('push', function() {});
     container.innerHTML = html;
   }
 
-  /* ── Send Notifications to Watch ── */
+  /* ── Send Notifications ── */
   async function startShopping() {
     if (Notification.permission !== 'granted') {
       await requestPermission();
       if (Notification.permission !== 'granted') return;
     }
-
-    if (shoppingList.length === 0) return;
+    if (!shoppingList.length) return;
 
     const btn = document.getElementById('sendBtn');
     btn.disabled = true;
@@ -578,20 +531,20 @@ self.addEventListener('push', function() {});
 
     let delay = 0;
     for (const entry of shoppingList) {
-      setTimeout(() => sendItemNotification(entry), delay);
-      delay += 800; // stagger so watch handles each individually
+      setTimeout(() => sendNotification(entry), delay);
+      delay += 900;
     }
 
     setTimeout(() => {
       btn.textContent = `✅ Sent ${shoppingList.length} item(s) to Watch`;
-    }, delay + 200);
+    }, delay + 300);
   }
 
-  async function sendItemNotification(entry) {
+  async function sendNotification(entry) {
     const tag = `item-${entry.id}`;
-    const options = {
+    const opts = {
       body: `Reply with the price in ETB`,
-      tag: tag,
+      tag,
       requireInteraction: true,
       renotify: true,
       vibrate: [500, 100, 500],
@@ -602,38 +555,41 @@ self.addEventListener('push', function() {});
     };
 
     try {
-      if (swRegistration && swRegistration.showNotification) {
-        await swRegistration.showNotification(`🛒 ${entry.item}`, options);
+      if (swReg) {
+        await swReg.showNotification(`🛒 ${entry.item}`, opts);
       } else {
-        new Notification(`🛒 ${entry.item}`, options);
+        new Notification(`🛒 ${entry.item}`, { body: opts.body, tag, requireInteraction: true, vibrate: opts.vibrate });
       }
-      log(`Sent: ${entry.item}`, 'sent');
+      log(`Sent to watch: ${entry.item}`, 'sent');
     } catch (e) {
-      log(`Failed to send "${entry.item}": ${e.message}`, 'error');
+      log(`Could not send "${entry.item}": ${e.message}`, 'error');
     }
   }
 
-  /* ── Price Reply Handler ── */
+  /* ── Record Price (auto or manual) ── */
   function recordPrice(itemId, price) {
     const listItem = shoppingList.find(i => i.id === itemId);
     const itemName = listItem ? listItem.item : `Item #${itemId}`;
-
-    const cleanPrice = (price || '').toString().trim();
+    const cleanPrice = String(price || '').trim();
     const now = new Date();
-    const timestamp = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
-
-    const existing = shoppingData.findIndex(d => d.id === itemId);
+    const timestamp = pad(now.getHours()) + ':' + pad(now.getMinutes());
     const record = { id: itemId, item: itemName, price: cleanPrice, timestamp };
 
-    if (existing >= 0) {
-      shoppingData[existing] = record;
-    } else {
-      shoppingData.push(record);
-    }
+    const idx = shoppingData.findIndex(d => d.id === itemId);
+    if (idx >= 0) shoppingData[idx] = record;
+    else shoppingData.push(record);
 
-    log(`Reply from watch → ${itemName}: ${cleanPrice} ETB`, 'reply');
+    log(`Price captured → ${itemName}: ${cleanPrice} ETB`, 'reply');
     renderResults();
     updateStats();
+  }
+
+  function saveManualPrice(itemId) {
+    const input = document.getElementById(`price-input-${itemId}`);
+    const val = (input ? input.value : '').trim();
+    if (!val) return;
+    recordPrice(itemId, val);
+    if (input) input.value = '';
   }
 
   /* ── Results Table ── */
@@ -641,66 +597,76 @@ self.addEventListener('push', function() {});
     const container = document.getElementById('resultsContainer');
     const dlBtn = document.getElementById('downloadBtn');
 
-    if (shoppingData.length === 0) {
-      container.innerHTML = `<div class="empty-state"><div class="icon">📊</div><div>Price replies from your watch will appear here.</div></div>`;
+    const allIds = [...new Set([...shoppingList.map(i => i.id), ...shoppingData.map(d => d.id)])];
+
+    if (!allIds.length) {
+      container.innerHTML = `<div class="empty-state"><div class="icon">📊</div><div>Prices will appear here after replies or manual entry.</div></div>`;
       dlBtn.disabled = true;
       return;
     }
 
-    dlBtn.disabled = false;
+    dlBtn.disabled = shoppingData.length === 0;
 
     let html = `<table>
       <thead><tr>
-        <th>#</th><th>Item</th><th>Price (ETB)</th><th>Time</th><th>Status</th>
+        <th>#</th><th>Item</th><th>Price (ETB)</th><th>Status / Enter Price</th>
       </tr></thead><tbody>`;
-
-    const allIds = new Set([...shoppingList.map(i => i.id), ...shoppingData.map(d => d.id)]);
 
     allIds.forEach(id => {
       const listItem = shoppingList.find(i => i.id === id);
       const dataItem = shoppingData.find(d => d.id === id);
       const name = listItem ? listItem.item : (dataItem ? dataItem.item : `Item #${id}`);
+      const num = id - 100;
 
       if (dataItem) {
         html += `<tr>
-          <td class="item-num">${id - 100}</td>
-          <td>${escHtml(name)}</td>
-          <td class="price-val">${escHtml(dataItem.price)}</td>
-          <td style="color:var(--muted)">${dataItem.timestamp}</td>
-          <td><span class="badge badge-received">✓ Received</span></td>
+          <td class="item-num">${num}</td>
+          <td>${esc(name)}</td>
+          <td class="price-val">${esc(dataItem.price)} <span style="color:var(--muted);font-size:0.72rem">${dataItem.timestamp}</span></td>
+          <td>
+            <span class="badge badge-received">✓ Got it</span>
+            <div class="price-input-row" style="margin-top:6px">
+              <input id="price-input-${id}" type="text" placeholder="Update…" inputmode="numeric" />
+              <button class="btn-save-price" onclick="saveManualPrice(${id})">Save</button>
+            </div>
+          </td>
         </tr>`;
-      } else if (listItem) {
+      } else {
         html += `<tr>
-          <td class="item-num">${id - 100}</td>
-          <td>${escHtml(name)}</td>
+          <td class="item-num">${num}</td>
+          <td>${esc(name)}</td>
           <td style="color:var(--muted)">—</td>
-          <td style="color:var(--muted)">—</td>
-          <td><span class="badge badge-pending">⏳ Waiting</span></td>
+          <td>
+            <span class="badge badge-pending">⏳ Waiting</span>
+            <div class="price-input-row" style="margin-top:6px">
+              <input id="price-input-${id}" type="text" placeholder="Type price…" inputmode="numeric" />
+              <button class="btn-save-price" onclick="saveManualPrice(${id})">Save</button>
+            </div>
+          </td>
         </tr>`;
       }
     });
 
     html += `</tbody></table>`;
     container.innerHTML = html;
+
+    allIds.forEach(id => {
+      const inp = document.getElementById(`price-input-${id}`);
+      if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') saveManualPrice(id); });
+    });
   }
 
   /* ── Stats ── */
   function updateStats() {
     document.getElementById('statTotal').textContent = shoppingList.length;
     document.getElementById('statReplied').textContent = shoppingData.length;
-
-    const sum = shoppingData.reduce((acc, d) => {
-      const n = parseFloat(d.price.replace(/[^\d.]/g, ''));
-      return acc + (isNaN(n) ? 0 : n);
-    }, 0);
-
+    const sum = shoppingData.reduce((a, d) => a + (parseFloat(d.price.replace(/[^\d.]/g, '')) || 0), 0);
     document.getElementById('statSum').textContent = sum > 0 ? sum.toLocaleString() : '0';
   }
 
   /* ── Download JSON ── */
   function downloadJSON() {
-    if (shoppingData.length === 0) return;
-
+    if (!shoppingData.length) return;
     const now = new Date();
     const dateStr = now.toISOString().slice(0, 10);
     const output = {
@@ -711,7 +677,6 @@ self.addEventListener('push', function() {});
       currency: 'ETB',
       items: shoppingData
     };
-
     const blob = new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -719,61 +684,31 @@ self.addEventListener('push', function() {});
     a.download = `market-data-${dateStr}.json`;
     a.click();
     URL.revokeObjectURL(url);
-
-    log(`Market JSON downloaded (${shoppingData.length} items).`, 'info');
+    log(`Market JSON downloaded — ${shoppingData.length} item(s).`, 'info');
   }
 
   /* ── Activity Log ── */
   function log(text, type) {
     const logEl = document.getElementById('notifLog');
-
-    if (logEmpty) {
-      logEl.innerHTML = '';
-      logEmpty = false;
-    }
+    if (logEmpty) { logEl.innerHTML = ''; logEmpty = false; }
 
     const now = new Date();
-    const time = now.getHours().toString().padStart(2, '0') + ':' +
-                 now.getMinutes().toString().padStart(2, '0') + ':' +
-                 now.getSeconds().toString().padStart(2, '0');
-
-    const dotClass = type === 'sent' ? 'dot-sent'
-                   : type === 'reply' ? 'dot-reply'
-                   : type === 'error' ? 'dot-error'
-                   : 'dot-info';
+    const time = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+    const dot = type === 'sent' ? 'dot-sent' : type === 'reply' ? 'dot-reply' : type === 'error' ? 'dot-error' : 'dot-info';
 
     const entry = document.createElement('div');
     entry.className = 'log-entry';
-    entry.innerHTML = `<div class="log-dot ${dotClass}"></div>
+    entry.innerHTML = `<div class="log-dot ${dot}"></div>
       <span class="log-time">${time}</span>
-      <span class="log-text">${escHtml(text)}</span>`;
-
+      <span class="log-text">${esc(text)}</span>`;
     logEl.insertBefore(entry, logEl.firstChild);
   }
 
-  /* ── Util ── */
-  function escHtml(str) {
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+  /* ── Utils ── */
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
-
-  /* ── Fallback: listen for notification close + reply via BroadcastChannel ── */
-  if ('BroadcastChannel' in window) {
-    const bc = new BroadcastChannel('shopping-tracker');
-    bc.onmessage = function(e) {
-      if (e.data && e.data.type === 'PRICE_REPLY') {
-        recordPrice(e.data.itemId, e.data.price);
-      }
-    };
-  }
-
-  /* ── Demo: simulate a watch reply (for testing in browser) ── */
-  window._simulateReply = function(itemId, price) {
-    recordPrice(itemId, price);
-  };
+  function pad(n) { return String(n).padStart(2, '0'); }
 </script>
 </body>
 </html>
