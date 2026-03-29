@@ -26,22 +26,16 @@
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
-      padding: 20px 16px 40px;
+      padding: 20px 16px 60px;
     }
 
-    header { text-align: center; margin-bottom: 24px; }
-
+    header { text-align: center; margin-bottom: 20px; }
     header h1 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
+      font-size: 1.55rem; font-weight: 700;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-
-    header p { color: var(--muted); font-size: 0.82rem; margin-top: 4px; }
+    header p { color: var(--muted); font-size: 0.8rem; margin-top: 4px; }
 
     .card {
       background: var(--surface);
@@ -50,14 +44,10 @@
       padding: 18px;
       margin-bottom: 14px;
     }
-
     .card h2 {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: var(--muted);
-      margin-bottom: 14px;
+      font-size: 0.72rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1.2px;
+      color: var(--muted); margin-bottom: 14px;
     }
 
     .input-row { display: flex; gap: 10px; }
@@ -67,26 +57,20 @@
       background: var(--surface2);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 11px 14px;
+      padding: 12px 14px;
       color: var(--text);
       font-size: 0.95rem;
       outline: none;
       transition: border-color 0.2s;
     }
-
     input[type="text"]:focus { border-color: var(--accent); }
-    input[type="text"]::placeholder { color: var(--muted); }
+    input::placeholder { color: var(--muted); }
 
     button {
-      cursor: pointer;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      padding: 11px 18px;
+      cursor: pointer; border: none; border-radius: 8px;
+      font-size: 0.88rem; font-weight: 600; padding: 11px 18px;
       transition: opacity 0.15s, transform 0.1s;
     }
-
     button:active { transform: scale(0.97); }
     button:disabled { opacity: 0.4; cursor: default; transform: none; }
 
@@ -95,263 +79,138 @@
     .btn-send {
       width: 100%;
       background: linear-gradient(135deg, var(--accent), #8b5cf6);
-      color: #fff;
-      padding: 14px;
-      font-size: 1rem;
-      border-radius: var(--radius);
-      margin-top: 10px;
+      color: #fff; padding: 15px; font-size: 1rem;
+      border-radius: var(--radius); margin-top: 12px;
     }
 
     .btn-download {
-      width: 100%;
-      background: var(--green);
-      color: #fff;
-      padding: 13px;
-      font-size: 0.95rem;
-      border-radius: var(--radius);
-      margin-top: 10px;
+      width: 100%; background: var(--green);
+      color: #fff; padding: 14px; font-size: 0.95rem;
+      border-radius: var(--radius); margin-top: 10px;
     }
 
-    .btn-clear {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 0.75rem;
-      padding: 5px 10px;
-      border-radius: 6px;
+    .btn-sm {
+      background: transparent; border: 1px solid var(--border);
+      color: var(--muted); font-size: 0.72rem; padding: 5px 10px; border-radius: 6px;
     }
 
     .btn-grant {
-      background: var(--accent);
-      color: #fff;
-      padding: 8px 14px;
-      border-radius: 7px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      flex-shrink: 0;
+      background: var(--accent); color: #fff;
+      padding: 8px 14px; border-radius: 7px; font-size: 0.8rem; font-weight: 600; flex-shrink: 0;
     }
 
-    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-
+    table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
     th {
-      text-align: left;
-      color: var(--muted);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      padding: 0 8px 10px 0;
-      border-bottom: 1px solid var(--border);
+      text-align: left; color: var(--muted); font-size: 0.68rem;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 0 8px 10px 0; border-bottom: 1px solid var(--border);
     }
-
-    td {
-      padding: 9px 8px 9px 0;
-      border-bottom: 1px solid var(--border);
-      vertical-align: middle;
-    }
-
+    td { padding: 10px 8px 10px 0; border-bottom: 1px solid var(--border); vertical-align: middle; }
     tr:last-child td { border-bottom: none; }
 
     .badge {
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: 600;
+      display: inline-block; padding: 3px 8px; border-radius: 20px;
+      font-size: 0.68rem; font-weight: 600;
     }
+    .badge-pending { background: rgba(243,156,18,0.15); color: var(--yellow); border: 1px solid rgba(243,156,18,0.3); }
+    .badge-received { background: rgba(46,204,113,0.12); color: var(--green); border: 1px solid rgba(46,204,113,0.25); }
 
-    .badge-pending {
-      background: rgba(243,156,18,0.15);
-      color: var(--yellow);
-      border: 1px solid rgba(243,156,18,0.3);
-    }
+    .price-val { color: var(--green); font-weight: 700; font-size: 0.95rem; }
+    .item-num { color: var(--muted); font-size: 0.72rem; min-width: 18px; }
 
-    .badge-received {
-      background: rgba(46,204,113,0.12);
-      color: var(--green);
-      border: 1px solid rgba(46,204,113,0.25);
-    }
+    .empty-state { text-align: center; padding: 28px 0; color: var(--muted); font-size: 0.84rem; }
+    .empty-state .icon { font-size: 1.8rem; margin-bottom: 7px; }
 
-    .price-val { color: var(--green); font-weight: 700; }
-
-    .empty-state {
-      text-align: center;
-      padding: 28px 0;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
-    .empty-state .icon { font-size: 1.8rem; margin-bottom: 8px; }
-
-    .notif-log {
-      max-height: 170px;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border) transparent;
-    }
-
-    .log-entry {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 7px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.8rem;
-    }
-
+    .notif-log { max-height: 160px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+    .log-entry { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 0.78rem; }
     .log-entry:last-child { border-bottom: none; }
-
-    .log-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      margin-top: 4px;
-      flex-shrink: 0;
-    }
-
+    .log-dot { width: 7px; height: 7px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; }
     .dot-sent { background: var(--accent); }
     .dot-reply { background: var(--green); }
     .dot-info { background: var(--muted); }
     .dot-error { background: var(--accent2); }
-
-    .log-time { color: var(--muted); flex-shrink: 0; min-width: 64px; }
-    .log-text { color: var(--text); }
+    .log-time { color: var(--muted); flex-shrink: 0; min-width: 62px; }
 
     .permission-banner {
-      background: rgba(108,99,255,0.12);
-      border: 1px solid rgba(108,99,255,0.3);
-      border-radius: var(--radius);
-      padding: 14px 16px;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      background: rgba(108,99,255,0.12); border: 1px solid rgba(108,99,255,0.3);
+      border-radius: var(--radius); padding: 13px 15px; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 12px;
     }
-
-    .permission-banner .icon { font-size: 1.4rem; flex-shrink: 0; }
-    .permission-banner p { font-size: 0.82rem; color: var(--text); line-height: 1.4; flex: 1; }
+    .permission-banner .icon { font-size: 1.3rem; flex-shrink: 0; }
+    .permission-banner p { font-size: 0.8rem; color: var(--text); line-height: 1.4; flex: 1; }
 
     .stat-row { display: flex; gap: 10px; margin-bottom: 14px; }
-
-    .stat {
-      flex: 1;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px;
-      text-align: center;
-    }
-
+    .stat { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 13px; text-align: center; }
     .stat .num {
-      font-size: 1.5rem;
-      font-weight: 700;
+      font-size: 1.45rem; font-weight: 700;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-
-    .stat .label {
-      font-size: 0.68rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-top: 2px;
-    }
-
-    .actions-row { display: flex; align-items: center; margin-bottom: 12px; }
-    .actions-row h2 { flex: 1; margin-bottom: 0; }
-
-    .item-num { color: var(--muted); font-size: 0.75rem; min-width: 20px; }
+    .stat .label { font-size: 0.66rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
 
     #notifStatus {
-      font-size: 0.75rem;
-      padding: 5px 11px;
-      border-radius: 20px;
-      font-weight: 600;
-      display: inline-block;
-      margin-bottom: 12px;
+      font-size: 0.73rem; padding: 4px 10px; border-radius: 20px;
+      font-weight: 600; display: inline-block; margin-bottom: 12px;
     }
-
     .status-granted { background: rgba(46,204,113,0.12); color: var(--green); border: 1px solid rgba(46,204,113,0.25); }
     .status-denied { background: rgba(255,101,132,0.12); color: var(--accent2); border: 1px solid rgba(255,101,132,0.25); }
     .status-default { background: rgba(243,156,18,0.12); color: var(--yellow); border: 1px solid rgba(243,156,18,0.3); }
 
-    /* Manual price entry */
-    .price-input-row {
-      display: flex;
-      gap: 6px;
-      margin-top: 4px;
+    .actions-row { display: flex; align-items: center; margin-bottom: 12px; }
+    .actions-row h2 { flex: 1; margin-bottom: 0; }
+
+    /* manual fallback inline input */
+    .manual-row {
+      display: flex; gap: 6px; margin-top: 6px;
     }
-
-    .price-input-row input {
-      width: 90px;
-      padding: 5px 8px;
-      font-size: 0.82rem;
-      border-radius: 6px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      color: var(--text);
-      outline: none;
+    .manual-row input {
+      width: 100px; padding: 5px 9px; font-size: 0.82rem;
+      border-radius: 6px; background: var(--surface2);
+      border: 1px solid var(--border); color: var(--text); outline: none;
+      -webkit-appearance: none;
     }
+    .manual-row input:focus { border-color: var(--green); }
+    .btn-save-price { background: var(--green); color: #fff; padding: 5px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
 
-    .price-input-row input:focus { border-color: var(--green); }
-
-    .btn-save-price {
-      background: var(--green);
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      font-weight: 600;
+    /* sw status chip */
+    #swChip {
+      font-size: 0.7rem; padding: 3px 9px; border-radius: 20px;
+      font-weight: 600; display: inline-block; margin-left: 8px; vertical-align: middle;
     }
-
-    .tip-box {
-      background: rgba(46,204,113,0.06);
-      border: 1px solid rgba(46,204,113,0.2);
-      border-radius: 9px;
-      padding: 12px 14px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 14px;
-    }
-
-    .tip-box strong { color: var(--green); }
+    .sw-ok { background: rgba(46,204,113,0.1); color: var(--green); border: 1px solid rgba(46,204,113,0.2); }
+    .sw-fail { background: rgba(255,101,132,0.1); color: var(--accent2); border: 1px solid rgba(255,101,132,0.2); }
+    .sw-wait { background: rgba(243,156,18,0.1); color: var(--yellow); border: 1px solid rgba(243,156,18,0.2); }
   </style>
 </head>
 <body>
 
 <header>
   <h1>Live Shopping Tracker</h1>
-  <p>Samsung Galaxy Watch · Bluetooth · Offline</p>
+  <p>Samsung Galaxy Watch · Reply with price directly on watch</p>
 </header>
 
 <div id="permissionBanner" class="permission-banner" style="display:none">
   <span class="icon">🔔</span>
-  <p>Enable notifications so each item is sent to your watch.</p>
-  <button class="btn-grant" onclick="requestPermission()">Enable</button>
+  <p>Allow notifications so items are sent to your watch with a Reply button.</p>
+  <button class="btn-grant" onclick="requestPermission()">Enable Now</button>
 </div>
 
-<div id="notifStatus" class="status-default">⏳ Checking notifications…</div>
+<div>
+  <span id="notifStatus" class="status-default">⏳ Checking…</span>
+  <span id="swChip" class="sw-wait">⚙ SW loading…</span>
+</div>
+<br>
 
 <div class="stat-row">
-  <div class="stat">
-    <div class="num" id="statTotal">0</div>
-    <div class="label">Items</div>
-  </div>
-  <div class="stat">
-    <div class="num" id="statReplied">0</div>
-    <div class="label">Priced</div>
-  </div>
-  <div class="stat">
-    <div class="num" id="statSum">0</div>
-    <div class="label">Total (ETB)</div>
-  </div>
+  <div class="stat"><div class="num" id="statTotal">0</div><div class="label">Items</div></div>
+  <div class="stat"><div class="num" id="statReplied">0</div><div class="label">Priced</div></div>
+  <div class="stat"><div class="num" id="statSum">0</div><div class="label">Total ETB</div></div>
 </div>
 
 <div class="card">
-  <h2>Add Items</h2>
+  <h2>Add Items to Your List</h2>
   <div class="input-row">
-    <input type="text" id="itemInput" placeholder="e.g. Teff, Ayib, Kibe…" />
+    <input type="text" id="itemInput" placeholder="e.g. Teff, Ayib, Kibe, Kolo…" />
     <button class="btn-add" onclick="addItem()">+ Add</button>
   </div>
 </div>
@@ -359,43 +218,33 @@
 <div class="card">
   <div class="actions-row">
     <h2>Shopping List</h2>
-    <button class="btn-clear" onclick="clearList()">Clear All</button>
+    <button class="btn-sm" onclick="clearList()">Clear All</button>
   </div>
   <div id="listContainer">
-    <div class="empty-state">
-      <div class="icon">🛒</div>
-      <div>Your list is empty. Add items above.</div>
-    </div>
+    <div class="empty-state"><div class="icon">🛒</div><div>Add items above.</div></div>
   </div>
   <button class="btn-send" id="sendBtn" onclick="startShopping()" disabled>
-    📡 Start Shopping — Send to Watch
+    📡 Start Shopping — Send All to Watch
   </button>
 </div>
 
 <div class="card">
   <h2>Activity Log</h2>
   <div class="notif-log" id="notifLog">
-    <div class="empty-state" style="padding:14px 0"><div>No activity yet.</div></div>
+    <div class="empty-state" style="padding:12px 0"><div>No activity yet.</div></div>
   </div>
 </div>
 
 <div class="card">
   <div class="actions-row">
-    <h2>Market Data — Prices</h2>
+    <h2>Collected Prices</h2>
   </div>
-
-  <div class="tip-box">
-    <strong>Watch reply:</strong> Tap the notification on your watch → Reply → type the price.<br>
-    <strong>Backup:</strong> If the reply doesn't auto-capture, enter prices manually in the table below.
-  </div>
-
   <div id="resultsContainer">
     <div class="empty-state">
-      <div class="icon">📊</div>
-      <div>Prices will appear here after replies or manual entry.</div>
+      <div class="icon">⌚</div>
+      <div>Reply from your watch appears here instantly.<br>Or use the manual fields below each item.</div>
     </div>
   </div>
-
   <button class="btn-download" id="downloadBtn" onclick="downloadJSON()" disabled>
     ⬇ Download Market JSON
   </button>
@@ -410,19 +259,26 @@
   let swReg = null;
   let logEmpty = true;
 
-  /* ── Service Worker Registration ── */
+  /* ── Boot ── */
   (async function boot() {
     checkPermission();
+    setSwChip('wait', '⚙ Loading SW…');
+
     if (!('serviceWorker' in navigator)) {
-      log('Service Worker not supported — manual price entry only.', 'info');
+      setSwChip('fail', '✗ SW not supported');
+      log('Service Worker not supported — use manual entry fields.', 'error');
       return;
     }
+
     try {
       swReg = await navigator.serviceWorker.register('./sw.js', { scope: './' });
+      await navigator.serviceWorker.ready;
       navigator.serviceWorker.addEventListener('message', onSWMessage);
-      log('Watch bridge ready (sw.js loaded).', 'info');
+      setSwChip('ok', '✓ Watch bridge ready');
+      log('Service Worker registered. Watch reply is active.', 'info');
     } catch (e) {
-      log('SW load failed — manual price entry available as backup.', 'info');
+      setSwChip('fail', '✗ SW failed');
+      log('SW failed: ' + e.message, 'error');
     }
   })();
 
@@ -431,21 +287,18 @@
     if (type === 'PRICE_REPLY') recordPrice(itemId, price);
   }
 
-  /* ── Notification Permission ── */
+  /* ── Permission ── */
   function checkPermission() {
-    if (!('Notification' in window)) {
-      setStatus('denied', '❌ Notifications not supported');
-      return;
-    }
+    if (!('Notification' in window)) { setStatus('denied', '❌ Not supported'); return; }
     const p = Notification.permission;
     if (p === 'granted') {
-      setStatus('granted', '✅ Notifications enabled');
+      setStatus('granted', '✅ Notifications on');
       document.getElementById('permissionBanner').style.display = 'none';
     } else if (p === 'denied') {
-      setStatus('denied', '🚫 Notifications blocked — check browser settings');
+      setStatus('denied', '🚫 Notifications blocked');
       document.getElementById('permissionBanner').style.display = 'flex';
     } else {
-      setStatus('default', '⏳ Tap "Enable" to allow notifications');
+      setStatus('default', '⏳ Allow notifications');
       document.getElementById('permissionBanner').style.display = 'flex';
     }
   }
@@ -453,139 +306,130 @@
   async function requestPermission() {
     const r = await Notification.requestPermission();
     checkPermission();
-    log(r === 'granted' ? 'Notifications granted.' : 'Notifications denied.', r === 'granted' ? 'info' : 'error');
+    log(r === 'granted' ? 'Permission granted.' : 'Permission denied.', r === 'granted' ? 'info' : 'error');
   }
 
-  function setStatus(type, text) {
+  function setStatus(t, txt) {
     const el = document.getElementById('notifStatus');
-    el.textContent = text;
-    el.className = 'status-' + type;
+    el.textContent = txt; el.className = 'status-' + t;
   }
 
-  /* ── List Management ── */
+  function setSwChip(t, txt) {
+    const el = document.getElementById('swChip');
+    el.textContent = txt;
+    el.className = t === 'ok' ? 'sw-ok' : t === 'fail' ? 'sw-fail' : 'sw-wait';
+  }
+
+  /* ── List ── */
   function addItem() {
     const input = document.getElementById('itemInput');
     const name = input.value.trim();
     if (!name) return;
     idCounter++;
     shoppingList.push({ id: idCounter, item: name });
-    input.value = '';
-    input.focus();
-    renderList();
-    renderResults();
-    updateStats();
+    input.value = ''; input.focus();
+    renderList(); renderResults(); updateStats();
   }
 
-  document.getElementById('itemInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') addItem();
-  });
+  document.getElementById('itemInput').addEventListener('keydown', e => { if (e.key === 'Enter') addItem(); });
 
   function removeItem(id) {
     shoppingList = shoppingList.filter(i => i.id !== id);
-    renderList();
-    renderResults();
-    updateStats();
+    renderList(); renderResults(); updateStats();
   }
 
   function clearList() {
     if (!shoppingList.length) return;
-    if (!confirm('Clear all items from the list?')) return;
-    shoppingList = [];
-    renderList();
-    renderResults();
-    updateStats();
+    if (!confirm('Clear the full list?')) return;
+    shoppingList = []; renderList(); renderResults(); updateStats();
   }
 
   function renderList() {
-    const container = document.getElementById('listContainer');
-    const sendBtn = document.getElementById('sendBtn');
+    const c = document.getElementById('listContainer');
+    const btn = document.getElementById('sendBtn');
     if (!shoppingList.length) {
-      container.innerHTML = `<div class="empty-state"><div class="icon">🛒</div><div>Your list is empty. Add items above.</div></div>`;
-      sendBtn.disabled = true;
-      return;
+      c.innerHTML = `<div class="empty-state"><div class="icon">🛒</div><div>Your list is empty.</div></div>`;
+      btn.disabled = true; return;
     }
-    sendBtn.disabled = false;
-    let html = `<table><thead><tr><th>#</th><th>Item</th><th></th></tr></thead><tbody>`;
-    shoppingList.forEach((entry, idx) => {
-      html += `<tr>
-        <td class="item-num">${idx + 1}</td>
-        <td>${esc(entry.item)}</td>
-        <td><button class="btn-clear" onclick="removeItem(${entry.id})">✕</button></td>
+    btn.disabled = false;
+    let h = `<table><thead><tr><th>#</th><th>Item</th><th></th></tr></thead><tbody>`;
+    shoppingList.forEach((e, i) => {
+      h += `<tr>
+        <td class="item-num">${i+1}</td>
+        <td>${esc(e.item)}</td>
+        <td><button class="btn-sm" onclick="removeItem(${e.id})">✕</button></td>
       </tr>`;
     });
-    html += `</tbody></table>`;
-    container.innerHTML = html;
+    c.innerHTML = h + `</tbody></table>`;
   }
 
-  /* ── Send Notifications ── */
+  /* ── Send Notifications with Reply Action ── */
   async function startShopping() {
     if (Notification.permission !== 'granted') {
       await requestPermission();
       if (Notification.permission !== 'granted') return;
     }
+    if (!swReg) {
+      log('Service Worker not ready — notifications require SW. Try refreshing.', 'error');
+      return;
+    }
     if (!shoppingList.length) return;
 
     const btn = document.getElementById('sendBtn');
     btn.disabled = true;
-    btn.textContent = '📡 Sending…';
+    btn.textContent = '📡 Sending to watch…';
 
     let delay = 0;
     for (const entry of shoppingList) {
       setTimeout(() => sendNotification(entry), delay);
-      delay += 900;
+      delay += 800;
     }
 
     setTimeout(() => {
-      btn.textContent = `✅ Sent ${shoppingList.length} item(s) to Watch`;
-    }, delay + 300);
+      btn.textContent = `⌚ Sent ${shoppingList.length} item(s) — reply on watch with price`;
+    }, delay + 200);
   }
 
   async function sendNotification(entry) {
-    const tag = `item-${entry.id}`;
-    const opts = {
-      body: `Reply with the price in ETB`,
-      tag,
-      requireInteraction: true,
-      renotify: true,
-      vibrate: [500, 100, 500],
-      actions: [
-        { action: 'reply', title: '💬 Reply with Price', type: 'text', placeholder: 'e.g. 3500' }
-      ],
-      data: { itemId: entry.id, item: entry.item }
-    };
-
     try {
-      if (swReg) {
-        await swReg.showNotification(`🛒 ${entry.item}`, opts);
-      } else {
-        new Notification(`🛒 ${entry.item}`, { body: opts.body, tag, requireInteraction: true, vibrate: opts.vibrate });
-      }
-      log(`Sent to watch: ${entry.item}`, 'sent');
+      await swReg.showNotification(`🛒 ${entry.item}`, {
+        body: 'Type the price in ETB and tap Send',
+        tag: `item-${entry.id}`,
+        requireInteraction: true,
+        renotify: true,
+        vibrate: [500, 100, 500],
+        actions: [
+          {
+            action: 'reply',
+            title: '💬 Reply with Price',
+            type: 'text',
+            placeholder: 'e.g. 3500'
+          }
+        ],
+        data: { itemId: entry.id, item: entry.item }
+      });
+      log(`Sent: ${entry.item}`, 'sent');
     } catch (e) {
-      log(`Could not send "${entry.item}": ${e.message}`, 'error');
+      log(`Failed "${entry.item}": ${e.message}`, 'error');
     }
   }
 
-  /* ── Record Price (auto or manual) ── */
+  /* ── Record Price ── */
   function recordPrice(itemId, price) {
     const listItem = shoppingList.find(i => i.id === itemId);
-    const itemName = listItem ? listItem.item : `Item #${itemId}`;
+    const itemName = listItem ? listItem.item : `Item #${itemId - 100}`;
     const cleanPrice = String(price || '').trim();
     const now = new Date();
     const timestamp = pad(now.getHours()) + ':' + pad(now.getMinutes());
     const record = { id: itemId, item: itemName, price: cleanPrice, timestamp };
-
     const idx = shoppingData.findIndex(d => d.id === itemId);
-    if (idx >= 0) shoppingData[idx] = record;
-    else shoppingData.push(record);
-
-    log(`Price captured → ${itemName}: ${cleanPrice} ETB`, 'reply');
-    renderResults();
-    updateStats();
+    if (idx >= 0) shoppingData[idx] = record; else shoppingData.push(record);
+    log(`⌚ Watch reply → ${itemName}: ${cleanPrice} ETB`, 'reply');
+    renderResults(); updateStats();
   }
 
   function saveManualPrice(itemId) {
-    const input = document.getElementById(`price-input-${itemId}`);
+    const input = document.getElementById(`manual-${itemId}`);
     const val = (input ? input.value : '').trim();
     if (!val) return;
     recordPrice(itemId, val);
@@ -594,64 +438,55 @@
 
   /* ── Results Table ── */
   function renderResults() {
-    const container = document.getElementById('resultsContainer');
+    const c = document.getElementById('resultsContainer');
     const dlBtn = document.getElementById('downloadBtn');
-
     const allIds = [...new Set([...shoppingList.map(i => i.id), ...shoppingData.map(d => d.id)])];
 
     if (!allIds.length) {
-      container.innerHTML = `<div class="empty-state"><div class="icon">📊</div><div>Prices will appear here after replies or manual entry.</div></div>`;
-      dlBtn.disabled = true;
-      return;
+      c.innerHTML = `<div class="empty-state"><div class="icon">⌚</div><div>Reply from your watch appears here instantly.<br>Or use the manual fields below each item.</div></div>`;
+      dlBtn.disabled = true; return;
     }
+    dlBtn.disabled = !shoppingData.length;
 
-    dlBtn.disabled = shoppingData.length === 0;
-
-    let html = `<table>
-      <thead><tr>
-        <th>#</th><th>Item</th><th>Price (ETB)</th><th>Status / Enter Price</th>
-      </tr></thead><tbody>`;
-
+    let h = `<table><thead><tr><th>#</th><th>Item</th><th>Price / Enter</th></tr></thead><tbody>`;
     allIds.forEach(id => {
-      const listItem = shoppingList.find(i => i.id === id);
-      const dataItem = shoppingData.find(d => d.id === id);
-      const name = listItem ? listItem.item : (dataItem ? dataItem.item : `Item #${id}`);
+      const li = shoppingList.find(i => i.id === id);
+      const di = shoppingData.find(d => d.id === id);
+      const name = li ? li.item : (di ? di.item : `Item #${id - 100}`);
       const num = id - 100;
 
-      if (dataItem) {
-        html += `<tr>
+      if (di) {
+        h += `<tr>
           <td class="item-num">${num}</td>
           <td>${esc(name)}</td>
-          <td class="price-val">${esc(dataItem.price)} <span style="color:var(--muted);font-size:0.72rem">${dataItem.timestamp}</span></td>
           <td>
-            <span class="badge badge-received">✓ Got it</span>
-            <div class="price-input-row" style="margin-top:6px">
-              <input id="price-input-${id}" type="text" placeholder="Update…" inputmode="numeric" />
+            <span class="price-val">${esc(di.price)} ETB</span>
+            <span style="color:var(--muted);font-size:0.7rem;margin-left:4px">${di.timestamp}</span>
+            <span class="badge badge-received" style="margin-left:4px">✓</span>
+            <div class="manual-row">
+              <input id="manual-${id}" type="text" inputmode="numeric" placeholder="Update…" />
               <button class="btn-save-price" onclick="saveManualPrice(${id})">Save</button>
             </div>
           </td>
         </tr>`;
       } else {
-        html += `<tr>
+        h += `<tr>
           <td class="item-num">${num}</td>
           <td>${esc(name)}</td>
-          <td style="color:var(--muted)">—</td>
           <td>
-            <span class="badge badge-pending">⏳ Waiting</span>
-            <div class="price-input-row" style="margin-top:6px">
-              <input id="price-input-${id}" type="text" placeholder="Type price…" inputmode="numeric" />
+            <span class="badge badge-pending">⏳ Waiting for watch</span>
+            <div class="manual-row">
+              <input id="manual-${id}" type="text" inputmode="numeric" placeholder="Type price…" />
               <button class="btn-save-price" onclick="saveManualPrice(${id})">Save</button>
             </div>
           </td>
         </tr>`;
       }
     });
-
-    html += `</tbody></table>`;
-    container.innerHTML = html;
+    c.innerHTML = h + `</tbody></table>`;
 
     allIds.forEach(id => {
-      const inp = document.getElementById(`price-input-${id}`);
+      const inp = document.getElementById(`manual-${id}`);
       if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') saveManualPrice(id); });
     });
   }
@@ -660,8 +495,8 @@
   function updateStats() {
     document.getElementById('statTotal').textContent = shoppingList.length;
     document.getElementById('statReplied').textContent = shoppingData.length;
-    const sum = shoppingData.reduce((a, d) => a + (parseFloat(d.price.replace(/[^\d.]/g, '')) || 0), 0);
-    document.getElementById('statSum').textContent = sum > 0 ? sum.toLocaleString() : '0';
+    const sum = shoppingData.reduce((a, d) => a + (parseFloat(d.price.replace(/[^\d.]/g,'')) || 0), 0);
+    document.getElementById('statSum').textContent = sum > 0 ? Math.round(sum).toLocaleString() : '0';
   }
 
   /* ── Download JSON ── */
@@ -670,45 +505,36 @@
     const now = new Date();
     const dateStr = now.toISOString().slice(0, 10);
     const output = {
-      exportedAt: now.toISOString(),
-      date: dateStr,
+      exportedAt: now.toISOString(), date: dateStr,
       totalItems: shoppingData.length,
-      totalCost: shoppingData.reduce((a, d) => a + (parseFloat(d.price.replace(/[^\d.]/g, '')) || 0), 0),
+      totalCost: shoppingData.reduce((a, d) => a + (parseFloat(d.price.replace(/[^\d.]/g,'')) || 0), 0),
       currency: 'ETB',
       items: shoppingData
     };
     const blob = new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url;
+    a.href = URL.createObjectURL(blob);
     a.download = `market-data-${dateStr}.json`;
     a.click();
-    URL.revokeObjectURL(url);
-    log(`Market JSON downloaded — ${shoppingData.length} item(s).`, 'info');
+    log(`Downloaded — ${shoppingData.length} items, total ${output.totalCost} ETB.`, 'info');
   }
 
-  /* ── Activity Log ── */
+  /* ── Log ── */
   function log(text, type) {
-    const logEl = document.getElementById('notifLog');
-    if (logEmpty) { logEl.innerHTML = ''; logEmpty = false; }
-
+    const el = document.getElementById('notifLog');
+    if (logEmpty) { el.innerHTML = ''; logEmpty = false; }
     const now = new Date();
     const time = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
     const dot = type === 'sent' ? 'dot-sent' : type === 'reply' ? 'dot-reply' : type === 'error' ? 'dot-error' : 'dot-info';
-
     const entry = document.createElement('div');
     entry.className = 'log-entry';
-    entry.innerHTML = `<div class="log-dot ${dot}"></div>
-      <span class="log-time">${time}</span>
-      <span class="log-text">${esc(text)}</span>`;
-    logEl.insertBefore(entry, logEl.firstChild);
+    entry.innerHTML = `<div class="log-dot ${dot}"></div><span class="log-time">${time}</span><span class="log-text">${esc(text)}</span>`;
+    el.insertBefore(entry, el.firstChild);
   }
 
   /* ── Utils ── */
-  function esc(s) {
-    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
-  function pad(n) { return String(n).padStart(2, '0'); }
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function pad(n) { return String(n).padStart(2,'0'); }
 </script>
 </body>
 </html>
